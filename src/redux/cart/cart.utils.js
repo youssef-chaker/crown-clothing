@@ -9,6 +9,17 @@ export const addItemToCart = (items, itemToAdd) => {
 };
 
 export const removeItemFromCart = (items, itemToRemove) => {
-  console.log(itemToRemove.id);
   return items.filter((item) => item.id !== itemToRemove.id);
+};
+
+export const reduceItemCount = (items, itemToReduce) => {
+  if (itemToReduce.quantity > 1) {
+    return items.map((item) =>
+      item.id === itemToReduce.id
+        ? { ...item, quantity: --item.quantity }
+        : item
+    );
+  } else {
+    return removeItemFromCart(items, itemToReduce);
+  }
 };
