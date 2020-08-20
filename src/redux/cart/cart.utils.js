@@ -7,3 +7,8 @@ export const addItemToCart = (items, itemToAdd) => {
   }
   return [...items, { ...itemToAdd, quantity: 1 }];
 };
+
+export const removeItemFromCart = (items, itemToRemove) => {
+  console.log(itemToRemove.id);
+  return items.filter((item) => item.id !== itemToRemove.id);
+};
